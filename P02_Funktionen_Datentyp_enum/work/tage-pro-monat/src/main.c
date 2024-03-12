@@ -16,7 +16,41 @@
 
 ///// Student Code
 
+// Enum values increment by 1 from the initial value, so only JAN needs to be explicitly set to 1.
+enum Monate {JAN = 1, FEB, MAR, APR, MAI, JUN, JUL, AUG, SEP, OKT, NOV, DEZ};
 
+int gibIntWert(char* prompt, int min, int max) {
+    int num;
+    char input[50];
+    do {
+        printf("%s: ", prompt);
+        fgets(input, 50, stdin);
+        num = atoi(input);
+    } while (num < min || num > max);
+
+    return num;
+}
+
+int istSchaltjahr(int jahr) {
+    if ((jahr % 4 == 0 && jahr % 100 != 0) || jahr % 400 == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int tageProMonat(int jahr, int monat) {
+    switch (monat) {
+    case JAN: case MAR: case MAI: case JUL: case AUG: case OKT: case DEZ:
+        return 31;
+    case APR: case JUN: case SEP: case NOV:
+        return 30;
+    case FEB:
+        return istSchaltjahr(jahr) ? 29 : 28;
+    default:
+        return 0;
+    }
+}
 
 ///// END Student Code
 
