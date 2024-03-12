@@ -13,4 +13,13 @@
  */
 // begin students to add code for task 4.1
 
+#ifndef READ_H
+#define READ_H
+
+#define READ_ERROR -2
+
+int getInt(int maxResult);
+
+#endif
+
 // end students to add code
