@@ -11,6 +11,7 @@
  * @file
  * @brief Lab implementation
  */
+
 #include <stdio.h>
 #include "read.h"
 #include "rectang.h"
@@ -23,13 +24,14 @@
  */
 int main(void) {
 	// begin students to add code for task 4.1
+
     int word;
     int a;
     int b;
     int c;
 
     for (;;) {
-        printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n");
+        printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n\n");
 
         do {
             printf("Seite a: ");
@@ -65,10 +67,11 @@ int main(void) {
             printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
         else
             printf("-> Dreieck %d-%d-%d ist nicht rechtwinklig\n", a, b, c);
-        printf("\n");
+        printf("\n\n");
     }
-    printf("\n\nbye bye\n");
+    printf("\n\nbye bye\n\n");
 
 	// end students to add code
+
     return 0;
 }

@@ -11,8 +11,9 @@
  * @file
  * @brief Lab implementation
  */
-# include <stdio.h>
-# include "read.h"
+
+#include <stdio.h>
+#include "read.h"
 
 // begin students to add code for task 4.1
 
