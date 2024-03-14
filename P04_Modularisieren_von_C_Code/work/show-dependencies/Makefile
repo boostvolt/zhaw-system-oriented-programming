@@ -13,6 +13,9 @@ include $(SNP_SHARED_MAKEFILE)
 # DEPFILES :=  ... define a list of png file names: %.c -> %.c.png
 # BEGIN-STUDENTS-TO-ADD-CODE
 
+# DEPFILES is a list of .c.png files corresponding to each .c file in SOURCES.
+# This is achieved by replacing the .c extension with .c.png for each file in SOURCES.
+DEPFILES := $(SOURCES:.c=.c.png)
 
 # END-STUDENTS-TO-ADD-CODE
 
@@ -21,8 +24,12 @@ include $(SNP_SHARED_MAKEFILE)
 # define dep target as .PHONEY
 # BEGIN-STUDENTS-TO-ADD-CODE
 
+# The .PHONEY target is used to specify that 'dep' is not a real file target.
+# This means that 'make' will always run the commands associated with 'dep',
+# regardless of whether a file named 'dep' exists or how up-to-date it is.
+.PHONEY: dep
 
-# BEGIN-STUDENTS-TO-ADD-CODE
+# END-STUDENTS-TO-ADD-CODE
 
 
 
@@ -30,8 +37,12 @@ include $(SNP_SHARED_MAKEFILE)
 # action: echo some text telling that the target is done using $@ - the echo command shall not be echoed before execution
 # BEGIN-STUDENTS-TO-ADD-CODE
 
+# The 'dep' target depends on the files in FULLTARGET and DEPFILES.
+# When 'dep' is built, it prints a message indicating that the dependency files have been generated.
+dep: $(FULLTARGET) $(DEPFILES)
+	@echo "Dependency files generated: $@"
 
-# BEGIN-STUDENTS-TO-ADD-CODE
+# END-STUDENTS-TO-ADD-CODE
 
 
 
@@ -39,8 +50,13 @@ include $(SNP_SHARED_MAKEFILE)
 # action: dot -Tpng $< >$@ || $(RM) $@
 # BEGIN-STUDENTS-TO-ADD-CODE
 
+# This rule defines how to create a .png file from a .dot file.
+# It uses the 'dot' command to convert the .dot file ($<) to a .png file ($@).
+# If the 'dot' command fails, it removes the output file ($@) to avoid keeping a potentially corrupted file.
+%.png: %.dot
+	dot -Tpng $< >$@ || $(RM) $@
 
-# BEGIN-STUDENTS-TO-ADD-CODE
+# END-STUDENTS-TO-ADD-CODE
 
 
 
@@ -48,8 +64,14 @@ include $(SNP_SHARED_MAKEFILE)
 # action: call $(TARGET) $(@:.dot=) <$< >$@ || $(RM) $@
 # BEGIN-STUDENTS-TO-ADD-CODE
 
+# This rule defines how to create a .dot file from a .dep file.
+# It calls the TARGET with the name of the .dep file (without the .dep extension) as an argument.
+# The output of the TARGET is redirected to the .dot file.
+# If the call to the TARGET fails, it removes the output file to avoid keeping a potentially corrupted file.
+%.dot: %.dep
+	call $(TARGET) $(@:.dot=) <$< >$@ || $(RM) $@
 
-# BEGIN-STUDENTS-TO-ADD-CODE
+# END-STUDENTS-TO-ADD-CODE
 
 
 
