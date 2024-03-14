@@ -90,42 +90,82 @@ table th:nth-of-type(2) {
 byte
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+unsigned char
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 boolean
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+#include <stdbool.h>
+bool
+```
+
+</td></tr>
 <tr><td>
 
 
 ```Java
 true
 ```
-</td><td></td></tr>
+</td><td>
+
+```C
+true
+0
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 false
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+false
+1
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 System.out.print(…)
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+printf(…)
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 System.out.println(…)
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+printf(…);
+putchar('\n');
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -133,14 +173,26 @@ System.in.read()
 ```
 
 
-</td><td></td></tr>
+</td><td>
+
+```C
+getchar()
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
 byte[] buffer = new byte[BUFFERSIZE];
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+unsigned char buffer[BUFFERSIZE];
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -150,7 +202,16 @@ public class rectang {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+#include <stdbool.h>
+bool Rectangular(…) {
+    { … }
+}
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -161,7 +222,15 @@ public class read {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+int getInt(…) {
+    { … }
+}
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -172,7 +241,15 @@ class triangle {
 }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+int main(void) {
+    { … }
+}
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -181,7 +258,13 @@ read ReadInt = new read();
 word = ReadInt.getInt(MAX_NUMBER);
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+int word = getInt(MAX_NUMBER);
+```
+
+</td></tr>
 <tr><td>
 
 ```Java
@@ -190,7 +273,14 @@ rectang Rect = new rectang();
 if (Rect.Rectangular(a, b, c) == true) { ... }
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+bool result = Rectangular(a, b, c);
+if (result) { … }
+```
+
+</td></tr>
 <tr><td>
 
 ```
@@ -199,7 +289,13 @@ System.out.println(
 + " ist rechtwinklig");
 ```
 
-</td><td></td></tr>
+</td><td>
+
+```C
+printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
+```
+
+</td></tr>
 </table>
 
 ## 4. Aufgabe 2: Makefile Regeln
