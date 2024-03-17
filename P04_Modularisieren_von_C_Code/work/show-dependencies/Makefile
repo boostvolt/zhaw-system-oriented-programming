@@ -3,7 +3,7 @@ SNP_SHARED_MAKEFILE := $(if $(SNP_SHARED_MAKEFILE),$(SNP_SHARED_MAKEFILE),~/snp/
 TARGET     := bin/dep2dot
 # Add all additional c-files to the SOURCES variable
 # BEGIN-STUDENTS-TO-ADD-CODE
-SOURCES    := src/main.c
+SOURCES    := src/main.c src/data.c src/output.c
 # END-STUDENTS-TO-ADD-CODE
 TSTSOURCES := tests/tests.c
 

@@ -36,7 +36,13 @@ static size_t dependencies(file_t files[], size_t len, size_t curr)
 		if (files[file].level == level + 1) {
 			// Write to stdout "  file -> include;\n" where file and include are the DOT node names of the respective files
 			// BEGIN-STUDENTS-TO-ADD-CODE
-
+            printf(
+                    "  \"%s (cluster_c%zd)\" -> \"%s (cluster_c%zd)\";\n",
+                    files[curr].name,
+                    files[curr].dir,
+                    files[file].name,
+                    files[file].dir
+            );
 			// END-STUDENTS-TO-ADD-CODE
 			file = dependencies(files, len, file);
 		} else {
@@ -57,6 +63,12 @@ void output_dot(const data_t data)
 	for (size_t file = 0; file < data.n_files; file++) {
 		// Write to stdout "  file [label=\"name\"];\n" where file is the DOT node name and name is the file name
 		// BEGIN-STUDENTS-TO-ADD-CODE
+        printf(
+                "  \"%s (cluster_c%zd)\" [label=\"%s\"];\n",
+                data.files[file].name,
+                data.files[file].dir,
+                data.files[file].name
+        );
 		// END-STUDENTS-TO-ADD-CODE
 	}
 	// directory clusters
@@ -67,18 +79,23 @@ void output_dot(const data_t data)
 			if (data.files[file].dir == dir) {
 				// Write to stdout "    file;\n" where file is the DOT node name
 				// BEGIN-STUDENTS-TO-ADD-CODE
+                printf(
+                        "    \"%s (cluster_c%zd)\";\n",
+                        data.files[file].name,
+                        data.files[file].dir
+                );
 				// END-STUDENTS-TO-ADD-CODE
 			}
 		}
 		printf("  }\n");
 	}
-	
+
 	// dependencies
 	size_t curr = 0;
 	do {
 		curr = dependencies(data.files, data.n_files, curr);
 	} while(curr < data.n_files);
-	
+
 	printf("}\n");
 }
 
